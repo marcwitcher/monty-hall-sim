@@ -41,5 +41,6 @@ make_deal <- function(doors, goats){
 }
 
 
-winRatio <- pivot_longer(do.call(rbind, replicate(trials, make_deal(doors, goats), simplify = FALSE)), values_to = "winF", names_to = "choice")
+winRatio <- do.call(rbind, replicate(trials, make_deal(doors, goats), simplify = FALSE))
 
+print(paste0("Stayers won ", colSums(winRatio)[2], " times. ", "Changers won ", colSums(winRatio)[1], " times."))
